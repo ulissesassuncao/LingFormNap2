@@ -1,9 +1,12 @@
-import React from "react";
+﻿import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
+/* DISCENTES
+   ULISSES ASSUNÇÃO
+   PATRESE MONTEIRO
+   NAYAN SOUZA*/
 function App() {
   const [values, setValues] = React.useState({
     value: "",
@@ -24,7 +27,6 @@ function App() {
     } else if (value === "_") {
       automato = "Q2";
     } else {
-      console.log("erro Q1");
     }
     return { automato, valid };
   };
@@ -37,7 +39,6 @@ function App() {
       valid = true;
       automato = "Q3";
     } else {
-      console.log("erro Q2");
     }
     return { automato, valid };
   };
@@ -46,7 +47,6 @@ function App() {
     let autToCompare = values.automato;
     let valueToUse = value;
     if (value.length < values.value.length) {
-      console.log("Emtrou", values.value, "Es", values.oldAut);
       autToCompare = values.oldAut;
       valueToUse = values.value.slice(0, values.value.length - 1);
     }
@@ -76,7 +76,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Estado é {values.automato}
         <TextField
           id="outlined-name"
           label="String"
@@ -87,14 +86,18 @@ function App() {
         />
         <Button
           variant="contained"
-          color="primary"
           onClick={() =>
-            setValues({ ...values, value: "", automato: null, valid: false })
+            setValues({
+              ...values,
+              value: "",
+              automato: null,
+              valid: values.valid
+            })
           }
         >
-          Resetar
+          LIMPAR
         </Button>
-        A string é válida {values.valid.toString()}
+        A string é: {values.valid ? "Válida" : "Inválida"}
       </header>
     </div>
   );
